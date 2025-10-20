@@ -7,27 +7,31 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
+  background-color: #f3f4f6;  /* softer neutral gray */
+  color: #2a2a2a;             /* slightly lighter than #333 */
   line-height: 1.6;
+  transition: background-color 0.6s ease, color 0.6s ease;
 }
+
 /* HEADER */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1.2rem 5%;
-  background: #fff;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  background: #fdfdfd; /* off-white instead of pure white */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
   position: sticky;
   top: 0;
   z-index: 100;
+  transition: background-color 0.6s ease, color 0.6s ease, border-color 0.6s ease;
 }
 
 /* Logo */
 header .logo {
   font-weight: 700;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
+  letter-spacing: 0.5px;
 }
 
 /* NAVIGATION BAR */
@@ -41,8 +45,8 @@ nav ul {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  width: 70%;             /* controls how much of the header the nav uses */
-  max-width: 600px;       /* prevents over-expanding on large screens */
+  width: 70%;
+  max-width: 600px;
   list-style: none;
   padding: 0;
 }
@@ -52,18 +56,19 @@ nav li {
   text-align: center;
 }
 
+/* Larger text size & modern underline */
 nav a {
   position: relative;
   display: inline-block;
   text-decoration: none;
   color: #333;
-  font-weight: 500;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1.3rem;  /* ⬅️ Increased text size */
+  padding: 0.6rem 1rem;
+  letter-spacing: 0.3px;
   transition: color 0.3s ease;
 }
 
-/* create invisible underline */
 nav a::after {
   content: "";
   position: absolute;
@@ -76,7 +81,6 @@ nav a::after {
   transform: translateX(-50%);
 }
 
-/* slide in on hover */
 nav a:hover {
   color: #0077ff;
 }
@@ -85,18 +89,45 @@ nav a:hover::after {
   width: 60%;
 }
 
-/* Theme toggle stays to the right */
+/* Theme toggle button */
 #theme-toggle {
   background: transparent;
-  border: none;
-  font-size: 1.4rem;
+  border: 2px solid #333;       /* Light mode border */
+  color: #333;
+  border-radius: 50%;           /* Makes it circular */
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: 
+    background 0.3s, 
+    color 0.3s, 
+    border-color 0.3s, 
+    transform 0.2s;
 }
 
 #theme-toggle:hover {
-  transform: scale(1.2);
+  background: #0077ff;
+  color: white;
+  border-color: #0077ff;
+  transform: scale(1.1);
 }
+
+/* 🌙 Dark mode version */
+body.dark #theme-toggle {
+  border: 2px solid #e6edf3;     /* Light border in dark mode */
+  color: #e6edf3;
+}
+
+body.dark #theme-toggle:hover {
+  background: #58a6ff;
+  color: #0d1117;
+  border-color: #58a6ff;
+}
+
 
 /* Responsive navbar */
 @media (max-width: 800px) {
@@ -108,6 +139,7 @@ nav a:hover::after {
   }
 
   nav a {
+    font-size: 1rem;
     padding: 0.75rem;
   }
 
@@ -115,22 +147,6 @@ nav a:hover::after {
     flex-direction: column;
     gap: 1rem;
   }
-}
-
-
-/* HERO */
-#hero {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 90vh;
-  background: linear-gradient(120deg, #0077ff, #00d4ff);
-  color: white;
-  text-align: center;
-}
-
-#hero h1 span {
-  color: #fff89a;
 }
 
 /* ABOUT */
@@ -154,11 +170,11 @@ nav a:hover::after {
 }
 
 .project-card {
-  background: #fff;
+  background: #fcfcfc;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
   border-radius: 10px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
   padding: 1rem;
-  transition: transform 0.3s;
+  transition: background-color 0.6s ease, color 0.6s ease, border-color 0.6s ease;
 }
 
 .project-card:hover {
@@ -208,6 +224,7 @@ footer {
   text-align: center;
   font-size: 0.9rem;
   letter-spacing: 0.5px;
+  transition: background-color 0.6s ease, color 0.6s ease, border-color 0.6s ease;
 }
 
 
@@ -217,7 +234,7 @@ footer {
   align-items: center;
   min-height: 90vh;
   padding: 4rem 10%;
-  background: linear-gradient(120deg, #0077ff, #00d4ff);
+  background: linear-gradient(135deg, #003f88, #0057b8, #0077ff);
   color: white;
   flex-wrap: wrap;
 }
@@ -296,38 +313,93 @@ footer {
   }
 }
 
-/* 🌙 DARK MODE */
+/* 🌙 DARK MODE — lighter, eye-friendly variant */
 body.dark {
-  background-color: #0d1117;
-  color: #e6edf3;
+  background-color: #1e2530; /* lighter graphite blue */
+  color: #f0f3f6;            /* softer white */
 }
 
+/* Navbar / header */
 body.dark header {
-  background-color: #161b22;
+  background-color: #232b36;
   box-shadow: 0 2px 5px rgba(255,255,255,0.05);
+  border-bottom: 1px solid #3a4452;
 }
 
+/* Navbar links */
 body.dark nav a {
-  color: #e6edf3;
+  color: #f0f3f6;
 }
 
 body.dark nav a:hover {
-  color: #58a6ff;
+  color: #7ab0ff;
   background: none;
 }
 
 body.dark #hero {
-  background: linear-gradient(120deg, #0d1117, #161b22);
-  color: #e6edf3;
+  background: linear-gradient(135deg, #1b2735, #233142, #2e3b55);
+  color: #f0f3f6;
 }
 
+/* Project cards */
 body.dark .project-card {
-  background-color: #161b22;
-  color: #e6edf3;
-  box-shadow: 0 3px 6px rgba(255,255,255,0.05);
+  background-color: #252f3d;
+  color: #f0f3f6;
+  box-shadow: 0 3px 6px rgba(255,255,255,0.06);
 }
 
+/* Footer */
 body.dark footer {
-  background-color: #161b22;
-  color: #8b949e;
+  background-color: #232b36;
+  color: #cbd5e1;
+}
+
+/* Theme toggle */
+body.dark #theme-toggle {
+  border: 2px solid #cbd5e1;
+  color: #cbd5e1;
+}
+
+body.dark #theme-toggle:hover {
+  background: #7ab0ff;
+  color: #1e2530;
+  border-color: #7ab0ff;
+}
+
+.about-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  text-align: center;
+}
+
+/* Make the two pictures appear side-by-side */
+.about-images {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap; /* keeps them stacked on small screens */
+}
+
+.about-img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #0077ff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.about-img:hover {
+  transform: scale(1.05);
+}
+
+/* Slightly larger images on big screens */
+@media (min-width: 1200px) {
+  .about-img {
+    width: 200px;
+    height: 200px;
+  }
 }
