@@ -4,7 +4,6 @@ toggle.addEventListener("click", () => {
   document.body.classList.toggle("dark");
   toggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
 });
-
 // Contact form
 const form = document.getElementById("contact-form");
 form.addEventListener("submit", (e) => {

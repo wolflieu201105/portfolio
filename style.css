@@ -11,13 +11,12 @@ body {
   color: #333;
   line-height: 1.6;
 }
-
 /* HEADER */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.2rem 2rem;
+  padding: 1.2rem 5%;
   background: #fff;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   position: sticky;
@@ -25,27 +24,99 @@ header {
   z-index: 100;
 }
 
+/* Logo */
 header .logo {
   font-weight: 700;
   font-size: 1.4rem;
 }
 
+/* NAVIGATION BAR */
+nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
 nav ul {
   display: flex;
-  gap: 1.5rem;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 70%;             /* controls how much of the header the nav uses */
+  max-width: 600px;       /* prevents over-expanding on large screens */
   list-style: none;
+  padding: 0;
+}
+
+nav li {
+  flex: 1;
+  text-align: center;
 }
 
 nav a {
+  position: relative;
+  display: inline-block;
   text-decoration: none;
   color: #333;
   font-weight: 500;
-  transition: color 0.3s;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: color 0.3s ease;
 }
 
+/* create invisible underline */
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #0077ff;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+/* slide in on hover */
 nav a:hover {
   color: #0077ff;
 }
+
+nav a:hover::after {
+  width: 60%;
+}
+
+/* Theme toggle stays to the right */
+#theme-toggle {
+  background: transparent;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+#theme-toggle:hover {
+  transform: scale(1.2);
+}
+
+/* Responsive navbar */
+@media (max-width: 800px) {
+  nav ul {
+    width: 100%;
+    max-width: none;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  nav a {
+    padding: 0.75rem;
+  }
+
+  header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
 
 /* HERO */
 #hero {
@@ -100,14 +171,18 @@ nav a:hover {
   flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
-  margin-top: 1rem;
+  list-style: none; /* removes the dots */
+  padding: 0;
+  margin: 1rem 0 0 0;
 }
 
 .skills-list li {
   background: #0077ff;
   color: white;
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1.2rem;
   border-radius: 20px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
 }
 
 /* CONTACT */
@@ -130,8 +205,129 @@ footer {
   background: #111;
   color: white;
   padding: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+
+#hero {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  min-height: 90vh;
+  padding: 4rem 10%;
+  background: linear-gradient(120deg, #0077ff, #00d4ff);
+  color: white;
+  flex-wrap: wrap;
+}
+
+/* Split hero */
+.hero-left {
+  flex: 1;
+  text-align: left;
+}
+
+.hero-left h1 {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.hero-left span {
+  color: #fff89a;
+}
+
+.hero-right {
+  flex: 1;
+  text-align: left;
+  max-width: 500px;
+}
+
+.hero-right p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* Contact Icons */
+.contact-icons {
+  display: flex;
   gap: 1rem;
+}
+
+.contact-icons img {
+  width: 35px;
+  height: 35px;
+  filter: brightness(0) invert(1);
+  transition: transform 0.2s, filter 0.3s;
+}
+
+.contact-icons img:hover {
+  transform: scale(1.15);
+  filter: brightness(0.9) invert(0.9);
+}
+
+/* Footer Social Icons same size */
+.socials img {
+  width: 30px;
+  height: 30px;
+  filter: brightness(0) invert(1);
+  margin: 0 0.5rem;
+  transition: transform 0.2s;
+}
+
+.socials img:hover {
+  transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  #hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-left, .hero-right {
+    text-align: center;
+  }
+
+  .hero-right p {
+    margin: 1rem auto 2rem;
+  }
+}
+
+/* 🌙 DARK MODE */
+body.dark {
+  background-color: #0d1117;
+  color: #e6edf3;
+}
+
+body.dark header {
+  background-color: #161b22;
+  box-shadow: 0 2px 5px rgba(255,255,255,0.05);
+}
+
+body.dark nav a {
+  color: #e6edf3;
+}
+
+body.dark nav a:hover {
+  color: #58a6ff;
+  background: none;
+}
+
+body.dark #hero {
+  background: linear-gradient(120deg, #0d1117, #161b22);
+  color: #e6edf3;
+}
+
+body.dark .project-card {
+  background-color: #161b22;
+  color: #e6edf3;
+  box-shadow: 0 3px 6px rgba(255,255,255,0.05);
+}
+
+body.dark footer {
+  background-color: #161b22;
+  color: #8b949e;
 }
