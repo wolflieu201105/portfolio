@@ -3,12 +3,13 @@
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Adjust this to your header height */
 }
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #f3f4f6;  /* softer neutral gray */
-  color: #2a2a2a;             /* slightly lighter than #333 */
+  background-color: #ede8e4;  /* warm light beige-gray */
+  color: #2e2e2e;
   line-height: 1.6;
   transition: background-color 0.6s ease, color 0.6s ease;
 }
@@ -19,7 +20,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 1.2rem 5%;
-  background: #fdfdfd; /* off-white instead of pure white */
+  background: #f5f0ec;
   box-shadow: 0 2px 5px rgba(0,0,0,0.08);
   position: sticky;
   top: 0;
@@ -30,8 +31,15 @@ header {
 /* Logo */
 header .logo {
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   letter-spacing: 0.5px;
+  color: #333;                /* Light mode color */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+header .logo:hover {
+  color: #0077ff;             /* Light mode hover */
 }
 
 /* NAVIGATION BAR */
@@ -155,6 +163,28 @@ body.dark #theme-toggle:hover {
   text-align: center;
 }
 
+section h2 {
+  font-size: 2.5rem;          /* increase overall size */
+  font-weight: 700;           /* make the title bold */
+  text-align: center;         /* center it horizontally */
+  width: 100%;                /* ensure it spans the full section width */
+  margin: 0 auto 2.5rem auto; /* keep same bottom spacing */
+  letter-spacing: 0.5px;      /* subtle tracking for polish */
+  transition: color 0.3s ease;
+  color: #2a2a2a;
+}
+
+body.dark section h2 {
+  color: #f0f3f6; /* Same light tone as other text in dark mode */
+}
+
+/* optional: adjust size for small screens */
+@media (max-width: 800px) {
+  section h2 {
+    font-size: 2rem;
+  }
+}
+
 .about-container {
   display: flex;
   flex-direction: column;
@@ -162,24 +192,222 @@ body.dark #theme-toggle:hover {
   gap: 1rem;
 }
 
-/* PROJECTS */
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+/* EXPERIENCE SECTION */
+#experience {
+  padding: 4rem 2rem;
+  text-align: left;
+  max-width: 1000px;
+  margin: 0 auto;
+  transition: background-color 0.6s ease, color 0.6s ease;
+}
+
+.experience-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Main card */
+.experience-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  background: #4a4e57;              /* Light mode background */
+  color: #e6e9ef;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  transition:
+    background-color 0.6s ease,
+    color 0.6s ease,
+    transform 0.3s ease,
+    box-shadow 0.6s ease;
+}
+
+.experience-item:hover {
+  transform: translateY(-4px);
+  background: #3c414d;              /* Slightly lighter hover tone */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Company logo */
+.company-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #fff;
+  padding: 0.4rem;
+  flex-shrink: 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, filter 0.5s ease;
+}
+
+.company-logo:hover {
+  transform: scale(1.05);
+  filter: brightness(1.05);
+}
+
+/* Text formatting */
+.experience-content h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.3rem;
+}
+
+.experience-content p {
+  font-size: 0.95rem;
+  color: #cfd3da;
+  margin-bottom: 0.8rem;
+  transition: color 0.6s ease;
+}
+
+.experience-content ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.experience-content li {
+  margin-bottom: 0.4rem;
+  line-height: 1.5;
+}
+
+/* 🌙 DARK MODE STYLES */
+body.dark #experience {
+  color: #1d212a;
+}
+
+body.dark .experience-item {
+  background: #d5dae1;              /* lighter gray-blue */
+  color: #1d212a;
+  box-shadow: 0 3px 8px rgba(255,255,255,0.08);
+}
+
+body.dark .experience-item:hover {
+  background: #cfd4db;              /* slightly darker hover tone */
+  box-shadow: 0 4px 10px rgba(255,255,255,0.15);
+}
+
+body.dark .experience-content p {
+  color: #3e4650;
+}
+
+body.dark .company-logo {
+  background: #f5f6f8;
+  filter: brightness(0.9);
+}
+
+body.dark .company-logo:hover {
+  filter: brightness(1);
+}
+
+/* 📱 Responsive layout */
+@media (max-width: 800px) {
+  .experience-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .company-logo {
+    width: 50px;
+    height: 50px;
+  }
+
+  .experience-content ul {
+    padding-left: 0;
+    list-style-position: inside;
+  }
+}
+
+.projects-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;          /* stretch across full viewport width */
+  max-width: 90vw;        /* remove the limiting width */
+  margin: 0 auto;
+  overflow: hidden;       /* hide overflow for smooth transitions */
+  padding: 0 5vw;         /* add breathing room on left/right sides */
+}
+
+.projects-track {
+  display: flex;
+  transition: transform 0.6s ease;
   gap: 2rem;
 }
 
 .project-card {
-  background: #fcfcfc;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+  flex: 0 0 70vw; /* wider card; adjust to 60vw or 80vw if you prefer */
+  background: #55565a;
+  color: #e6e9ef;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.project-card img {
+  width: 100%;
   border-radius: 10px;
-  padding: 1rem;
-  transition: background-color 0.6s ease, color 0.6s ease, border-color 0.6s ease;
+  margin-bottom: 1rem;
 }
 
 .project-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
+  background: #343c4d;
 }
+
+/* BUTTONS */
+.proj-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 119, 255, 0.15);
+  border: 2px solid #0077ff;
+  color: #0077ff;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(6px);
+  z-index: 5;
+}
+
+.proj-btn:hover {
+  background: rgba(0, 119, 255, 0.25);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.proj-btn.prev { left: 1rem; }
+.proj-btn.next { right: 1rem; }
+
+.proj-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* DARK MODE */
+body.dark .project-card {
+  background: #d5dae1;
+  color: #1d212a;
+}
+
+body.dark .project-card:hover {
+  background: #cfd4db;
+}
+
+body.dark .proj-btn {
+  border-color: #7ab0ff;
+  color: #7ab0ff;
+  background: rgba(122, 176, 255, 0.15);
+}
+
+/* 🌙 DARK MODE ADAPTATION */
 
 /* SKILLS */
 .skills-list {
@@ -326,6 +554,14 @@ body.dark header {
   border-bottom: 1px solid #3a4452;
 }
 
+body.dark header .logo {
+  color: #f0f3f6;             /* Light gray for dark mode */
+}
+
+body.dark header .logo:hover {
+  color: #7ab0ff;             /* Soft blue hover for dark mode */
+}
+
 /* Navbar links */
 body.dark nav a {
   color: #f0f3f6;
@@ -339,13 +575,6 @@ body.dark nav a:hover {
 body.dark #hero {
   background: linear-gradient(135deg, #1b2735, #233142, #2e3b55);
   color: #f0f3f6;
-}
-
-/* Project cards */
-body.dark .project-card {
-  background-color: #252f3d;
-  color: #f0f3f6;
-  box-shadow: 0 3px 6px rgba(255,255,255,0.06);
 }
 
 /* Footer */
@@ -401,5 +630,38 @@ body.dark #theme-toggle:hover {
   .about-img {
     width: 200px;
     height: 200px;
+  }
+}
+
+/* 📱 Compact mobile header fix */
+@media (max-width: 800px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;                /* reduce vertical space */
+    padding: 0.8rem 1rem;       /* tighter header padding */
+  }
+
+  nav {
+    width: 100%;
+  }
+
+  nav ul {
+    flex-direction: row;        /* ⬅️ keep nav items side-by-side even on mobile */
+    justify-content: center;
+    gap: 0.8rem;                /* small spacing between links */
+    flex-wrap: wrap;            /* allow wrapping if too narrow */
+  }
+
+  nav a {
+    font-size: 1rem;
+    padding: 0.4rem 0.8rem;     /* smaller padding */
+  }
+
+  #theme-toggle {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
   }
 }

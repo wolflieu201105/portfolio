@@ -4,14 +4,14 @@ const body = document.body;
 const hero = document.getElementById("hero");
 
 const lightGradient = [
-  [0, 63, 136],   // #003f88
-  [0, 87, 184],   // #0057b8
-  [0, 119, 255]   // #0077ff
+  [0, 63, 136], // #003f88
+  [0, 87, 184], // #0057b8
+  [0, 119, 255], // #0077ff
 ];
 const darkGradient = [
-  [10, 25, 47],   // #0a192f
-  [17, 34, 64],   // #112240
-  [30, 58, 138]   // #1e3a8a
+  [10, 25, 47], // #0a192f
+  [17, 34, 64], // #112240
+  [30, 58, 138], // #1e3a8a
 ];
 
 toggle.addEventListener("click", () => {
@@ -33,9 +33,9 @@ function animateGradient(element, targetColors, duration = 800) {
       interpolateColor(start, targetColors[i], progress)
     );
     element.style.background = `linear-gradient(135deg,
-      rgb(${blended[0].join(',')}),
-      rgb(${blended[1].join(',')}),
-      rgb(${blended[2].join(',')})
+      rgb(${blended[0].join(",")}),
+      rgb(${blended[1].join(",")}),
+      rgb(${blended[2].join(",")})
     )`;
     if (frame >= steps) clearInterval(interval);
   }, duration / steps);
@@ -49,5 +49,5 @@ function interpolateColor(start, end, t) {
 function getCurrentGradientColors(element) {
   const style = getComputedStyle(element).backgroundImage;
   const matches = [...style.matchAll(/rgb[a]?\(([^)]+)\)/g)];
-  return matches.map(m => m[1].split(',').map(n => parseInt(n.trim())));
+  return matches.map((m) => m[1].split(",").map((n) => parseInt(n.trim())));
 }

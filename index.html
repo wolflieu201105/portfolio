@@ -10,10 +10,11 @@
 
   <!-- HEADER -->
   <header>
-    <div class="logo">Wolflieu</div>
+    <a href="#hero" class="logo">Wolflieu</a>
     <nav>
       <ul>
         <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
       </ul>
@@ -33,13 +34,13 @@
         I enjoy turning simple ideas into interactive and impactful tools.
       </p>
       <div class="contact-icons">
-        <a href="https://github.com/yourusername" target="_blank">
+        <a href="https://github.com/wolflieu201105" target="_blank">
           <img src="assets/icons/github.svg" alt="GitHub">
         </a>
-        <a href="https://linkedin.com/in/yourprofile" target="_blank">
+        <a href="https://linkedin.com/in/wolflieu" target="_blank">
           <img src="assets/icons/linkedin.svg" alt="LinkedIn">
         </a>
-        <a href="mailto:youremail@example.com">
+        <a href="mailto:wolflieuus201105@gmail.com">
           <img src="assets/icons/mail.svg" alt="Email">
         </a>
       </div>
@@ -65,22 +66,84 @@
     </div>
   </section>
 
-  <!-- PROJECTS -->
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="experience-container">
+      
+      <div class="experience-item">
+        <img src="assets/icons/fpt.png" alt="FPT Software Logo" class="company-logo">
+        <div class="experience-content">
+          <h3>Data Engineer Intern — FPT Software</h3>
+          <p><em>Jul 2024 – Sep 2024 | Hanoi, Vietnam</em></p>
+          <ul>
+            <li>Designed scalable ETL pipelines using Airflow and PostgreSQL for real-time analytics.</li>
+            <li>Dockerized workflows to improve data ingestion scalability by 40%.</li>
+            <li>Stack: Airflow, PostgreSQL, Docker, Python</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="experience-item">
+        <img src="assets/icons/kpmg.png" alt="KPMG Logo" class="company-logo">
+        <div class="experience-content">
+          <h3>Risk Consulting Intern — KPMG Vietnam</h3>
+          <p><em>Jul 2024 – Aug 2024 | Hanoi, Vietnam</em></p>
+          <ul>
+            <li>Supported AI system development for detecting entity name similarities in compliance checks.</li>
+            <li>Assisted in translating and documenting reports for client-facing risk management solutions.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+<!-- PROJECTS -->
   <section id="projects">
     <h2>Projects</h2>
-    <div class="project-grid">
-      <div class="project-card">
-        <img src="assets/images/project1.png" alt="Project 1">
-        <h3>Project Title</h3>
-        <p>Brief description of the project.</p>
-        <a href="#" target="_blank">View on GitHub</a>
+
+    <div class="projects-container">
+      <button class="proj-btn prev">←</button>
+
+      <div class="projects-track">
+        <div class="project-card">
+          <img src="assets/images/project1.png" alt="Project 1">
+          <h3>Trailspur Real Estate Data Pipeline</h3>
+          <p>Automated spatial data ingestion and analysis using PostgreSQL + Python.</p>
+          <a href="#" target="_blank">View on GitHub</a>
+        </div>
+
+        <div class="project-card">
+          <img src="assets/images/project2.png" alt="Project 2">
+          <h3>CRM System for Viettel CX</h3>
+          <p>Full-stack contract management platform with Spring Boot & Thymeleaf.</p>
+          <a href="#" target="_blank">View on GitHub</a>
+        </div>
+
+        <div class="project-card">
+          <img src="assets/images/project3.png" alt="Project 3">
+          <h3>ILI Forecast App</h3>
+          <p>Streamlit app predicting influenza-like illness trends using ML models.</p>
+          <a href="#" target="_blank">Live Demo</a>
+        </div>
+
+        <div class="project-card">
+          <img src="assets/images/project4.png" alt="Project 4">
+          <h3>Payment Transaction Data Pipeline</h3>
+          <p>ETL pipeline built with Airflow, Docker, and PostgreSQL for data analytics.</p>
+          <a href="#" target="_blank">View on GitHub</a>
+        </div>
+
+        <div class="project-card">
+          <img src="assets/images/project5.png" alt="Project 5">
+          <h3>Endless Journey (Java Swing)</h3>
+          <p>Modernized a traditional board game with improved UI and MVC pattern.</p>
+          <a href="#" target="_blank">View on GitHub</a>
+        </div>
       </div>
-      <div class="project-card">
-        <img src="assets/images/project2.png" alt="Project 2">
-        <h3>Another Project</h3>
-        <p>Brief description of the project.</p>
-        <a href="#" target="_blank">Live Demo</a>
-      </div>
+
+      <button class="proj-btn next">→</button>
     </div>
   </section>
 
@@ -128,5 +191,40 @@
 
 
   <script src="script.js"></script>
+  <script>
+  const track = document.querySelector('.projects-track');
+  const cards = document.querySelectorAll('.project-card');
+  const nextBtn = document.querySelector('.proj-btn.next');
+  const prevBtn = document.querySelector('.proj-btn.prev');
+
+  let index = 2; // start centered on Project 3
+  const gapVW = 2; // matches CSS gap (2rem ~= 2vw visually)
+
+  function updateCarousel() {
+    const offset = -(index - 2) * (70 + gapVW); // 70vw per card
+    console.log(offset);
+    track.style.transform = `translateX(${offset}vw)`;
+
+    prevBtn.disabled = index === 0;
+    nextBtn.disabled = index === cards.length - 1;
+  }
+
+  nextBtn.addEventListener('click', () => {
+    if (index < cards.length - 1) {
+      index++;
+      updateCarousel();
+    }
+  });
+
+  prevBtn.addEventListener('click', () => {
+    if (index > 0) {
+      index--;
+      updateCarousel();
+    }
+  });
+
+  window.addEventListener('load', updateCarousel);
+</script>
+
 </body>
 </html>
