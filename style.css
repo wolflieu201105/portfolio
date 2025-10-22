@@ -368,7 +368,7 @@ body.dark .company-logo:hover {
 .project-card img {
   width: auto;
   height: auto;              /* maintains original ratio */
-  max-height: 380px;         /* ⬆️ increased height for more visual presence */
+  max-height: 320px;         /* ⬆️ increased height for more visual presence */
   border-radius: 48px;       /* ✅ smoother, more noticeable rounded corners */
   margin-bottom: 1rem;
   object-fit: cover;         /* fills card neatly while respecting ratio */
@@ -562,8 +562,9 @@ footer {
 /* Split hero */
 .hero-left {
   flex: 1;
+  font-size: 2.3rem;
   text-align: left;
-  max-width: 50vw;
+  max-width: 60vw;
   overflow: hidden;
 }
 
