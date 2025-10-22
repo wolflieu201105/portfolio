@@ -14,6 +14,20 @@ body {
   transition: background-color 0.6s ease, color 0.6s ease;
 }
 
+/* Section paragraphs */
+section p {
+  font-size: 1.6rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Responsive scaling for mobile */
+@media (max-width: 800px) {
+  h1 { font-size: 2.4rem; }
+  h2 { font-size: 1.6rem; }
+  h3 { font-size: 1.2rem; }
+}
+
 /* HEADER */
 header {
   display: flex;
@@ -232,8 +246,8 @@ body.dark section h2 {
 
 /* Company logo */
 .company-logo {
-  width: 60px;
-  height: 60px;
+  width: 15%;
+  height: auto;
   object-fit: contain;
   border-radius: 8px;
   background: #fff;
@@ -250,12 +264,12 @@ body.dark section h2 {
 
 /* Text formatting */
 .experience-content h3 {
-  font-size: 1.2rem;
+  font-size: 2rem;
   margin-bottom: 0.3rem;
 }
 
 .experience-content p {
-  font-size: 0.95rem;
+  font-size: 1.2rem;
   color: #cfd3da;
   margin-bottom: 0.8rem;
   transition: color 0.6s ease;
@@ -267,6 +281,7 @@ body.dark section h2 {
 }
 
 .experience-content li {
+  font-size: 1.3rem;
   margin-bottom: 0.4rem;
   line-height: 1.5;
 }
@@ -277,7 +292,7 @@ body.dark #experience {
 }
 
 body.dark .experience-item {
-  background: #d5dae1;              /* lighter gray-blue */
+  background: #8b8e92;              /* lighter gray-blue */
   color: #1d212a;
   box-shadow: 0 3px 8px rgba(255,255,255,0.08);
 }
@@ -326,7 +341,7 @@ body.dark .company-logo:hover {
   justify-content: center;
 
   width: 100%;          /* stretch across full viewport width */
-  max-width: 90vw;        /* remove the limiting width */
+  max-width: 100%;        /* remove the limiting width */
   margin: 0 auto;
   overflow: hidden;       /* hide overflow for smooth transitions */
   padding: 0 5vw;         /* add breathing room on left/right sides */
@@ -339,25 +354,101 @@ body.dark .company-logo:hover {
 }
 
 .project-card {
-  flex: 0 0 70vw; /* wider card; adjust to 60vw or 80vw if you prefer */
+  flex: 0 0 60vw; /* wider card; adjust to 60vw or 80vw if you prefer */
   background: #55565a;
   color: #e6e9ef;
-  border-radius: 12px;
-  padding: 2rem;
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
   text-align: center;
   box-shadow: 0 3px 8px rgba(0,0,0,0.15);
   transition: transform 0.3s ease, background-color 0.3s ease;
+  position: relative;
 }
 
 .project-card img {
-  width: 100%;
-  border-radius: 10px;
+  width: auto;
+  height: auto;              /* maintains original ratio */
+  max-height: 380px;         /* ⬆️ increased height for more visual presence */
+  border-radius: 48px;       /* ✅ smoother, more noticeable rounded corners */
   margin-bottom: 1rem;
+  object-fit: cover;         /* fills card neatly while respecting ratio */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* subtle depth */
+  object-fit: contain;
+}
+
+.project-card h3 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Project and experience descriptions */
+.project-card p{
+  text-align: left;
+  width: 100%;
+  margin-top: 0.6rem;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.project-card img:hover {
+  transform: scale(1.04);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+
+@media (max-width: 800px) {
+  .project-card img {
+    max-height: 180px;
+  }
 }
 
 .project-card:hover {
   transform: translateY(-4px);
   background: #343c4d;
+}
+/* --- Project buttons --- */
+.project-card a {
+  display: inline-block;
+  margin-top: 1.4rem;
+  padding: 0.7rem 1.5rem;
+  background: #0077ff;
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.project-card a:hover {
+  background: #005fd1;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
+}
+
+.project-card a:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* 🌙 Dark mode version */
+body.dark .project-card a {
+  background: #1a4cff;
+  color: #e6e9ef;
+}
+
+body.dark .project-card a:hover {
+  background: #153ed1;
+}
+
+body.dark .project-card h3 {
+  color: #1d212a;
 }
 
 /* BUTTONS */
@@ -393,7 +484,7 @@ body.dark .company-logo:hover {
 
 /* DARK MODE */
 body.dark .project-card {
-  background: #d5dae1;
+  background: #8b8e92;
   color: #1d212a;
 }
 
@@ -425,6 +516,7 @@ body.dark .proj-btn {
   color: white;
   padding: 0.6rem 1.2rem;
   border-radius: 20px;
+  font-size: 1.2rem;
   font-weight: 500;
   letter-spacing: 0.3px;
 }
@@ -471,11 +563,8 @@ footer {
 .hero-left {
   flex: 1;
   text-align: left;
-}
-
-.hero-left h1 {
-  font-size: 3rem;
-  font-weight: 700;
+  max-width: 50vw;
+  overflow: hidden;
 }
 
 .hero-left span {
@@ -489,7 +578,7 @@ footer {
 }
 
 .hero-right p {
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   margin-bottom: 2rem;
   line-height: 1.6;
 }
@@ -501,8 +590,8 @@ footer {
 }
 
 .contact-icons img {
-  width: 35px;
-  height: 35px;
+  width: 50px;
+  height: 50px;
   filter: brightness(0) invert(1);
   transition: transform 0.2s, filter 0.3s;
 }
@@ -664,4 +753,73 @@ body.dark #theme-toggle:hover {
     height: 36px;
     font-size: 1rem;
   }
+}
+
+/* 🦸 HERO TEXT EMPHASIS */
+#hero h1 {
+  font-size: 2.6rem;        /* ⬆️ make the name/title stand out */
+  font-weight: 800;         /* bold and confident */
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+}
+
+#hero span {
+  color: #fff89a;           /* keeps highlight color */
+  font-weight: 800;
+}
+
+body.dark #hero h1 {
+  color: #f0f3f6;           /* ensures visibility in dark mode */
+}
+
+@media (max-width: 800px) {
+  #hero h1 {
+    font-size: 2.6rem;      /* smaller but still readable on phones */
+  }
+}
+
+/* 🖋️ Typewriter effect */
+#typing-text {
+  display: inline-block;
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: inherit;
+  white-space: normal;
+  overflow: hidden;
+  border-right: none;
+  max-width: 100%;
+  text-overflow: ellipsis;
+}
+
+/* Cursor underscore effect */
+.typing-cursor {
+  display: inline-block;
+  font-weight: 900;
+  font-size: 2.6rem;
+  color: #fff89a; /* glowing yellow underscore */
+  animation: blinkUnderscore 0.8s steps(1) infinite;
+  position: relative;
+  top: 0.1em;
+}
+
+/* Subtle blink */
+@keyframes blinkUnderscore {
+  50% { opacity: 0; }
+}
+
+@media (max-width: 800px) {
+  #typing-text, .typing-cursor {
+    font-size: 2.6rem;
+  }
+}
+
+[data-aos] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition-property: transform, opacity;
+}
+
+[data-aos].aos-animate {
+  opacity: 1;
+  transform: translateY(0);
 }

@@ -6,6 +6,9 @@
   <title>Your Name | Portfolio</title>
   <link rel="stylesheet" href="style.css">
 </head>
+<!-- AOS Animation Library -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <body>
 
   <!-- HEADER -->
@@ -25,23 +28,26 @@
   <!-- HERO -->
   <section id="hero">
     <div class="hero-left">
-      <h1>Hi, I'm <span>Pham Gia Huy</span></h1>
-      <h1>Or you might know me as <span>Wolflieu</span></h1>
+      <h1 id="typing-text"></h1>
+      <span class="typing-cursor">_</span>
     </div>
+
     <div class="hero-right">
       <p>
-        A software engineer passionate about creating meaningful digital experiences.  
-        I enjoy turning simple ideas into interactive and impactful tools.
+        A curious learner and problem solver who enjoys turning challenges into opportunities to grow. I love exploring how things work and using that understanding to design clean, creative, and impactful solutions.
       </p>
       <div class="contact-icons">
         <a href="https://github.com/wolflieu201105" target="_blank">
-          <img src="assets/icons/github.svg" alt="GitHub">
+          <img src="assets/icons/github.svg" alt="GitHub" class="large_icon">
         </a>
         <a href="https://linkedin.com/in/wolflieu" target="_blank">
-          <img src="assets/icons/linkedin.svg" alt="LinkedIn">
+          <img src="assets/icons/linkedin.svg" alt="LinkedIn" class="large_icon">
         </a>
-        <a href="mailto:wolflieuus201105@gmail.com">
-          <img src="assets/icons/mail.svg" alt="Email">
+        <a href="mailto:wolflieuus201105@gmail.com" target="_blank">
+          <img src="assets/icons/mail.svg" alt="Email" class="small_icon">
+        </a>
+        <a href="https://drive.google.com/file/d/1EBU8bHTJfcuZsiX5cqIDJwGxEuslESgj/view?usp=sharing" target="_blank">
+          <img src="assets/icons/cv.svg" alt="Resume" class="small_icon">
         </a>
       </div>
     </div>
@@ -49,37 +55,36 @@
 
   <!-- ABOUT -->
   <section id="about">
-    <h2>About Me</h2>
+    <h2 data-aos="fade-up">About Me</h2>
     <div class="about-container">
-      <div class="about-images">
+      <div class="about-images" data-aos="fade-up">
         <img src="assets/images/profile.jpg" alt="Profile picture" class="about-img">
         <img src="assets/images/github-profile.jpg" alt="GitHub profile picture" class="about-img">
       </div>
 
-      <p>
-        I’m a curious and learning-driven individual who thrives in fast-changing environments. 
-        I love diving into new technologies, adapting quickly to challenges, and transforming 
-        unfamiliar problems into growth opportunities. Whether it’s mastering a new framework 
-        or collaborating across different domains, I take pride in learning fast and building 
-        things that make an impact.
+      <p data-aos="fade-up">
+        I’m a curious and learning-driven individual who adapts fast in a chaning environments. 
+        I love diving into challenges, transforming unfamiliar problems into growth and innovation opportunities. 
+        For me, every obstacle is not just something to solve. It is a chance to understand more deeply and build something meaningful.
       </p>
     </div>
   </section>
 
 
   <section id="experience">
-    <h2>Experience</h2>
-    <div class="experience-container">
+    <h2 data-aos="fade-up">Experience</h2>
+    <div class="experience-container" data-aos="fade-up">
       
       <div class="experience-item">
         <img src="assets/icons/fpt.png" alt="FPT Software Logo" class="company-logo">
         <div class="experience-content">
-          <h3>Data Engineer Intern — FPT Software</h3>
-          <p><em>Jul 2024 – Sep 2024 | Hanoi, Vietnam</em></p>
+          <h3>Java Developer Intern — FPT IS</h3>
+          <p><em>June 2025 – Aug 2025 | Hanoi, Vietnam</em></p>
           <ul>
-            <li>Designed scalable ETL pipelines using Airflow and PostgreSQL for real-time analytics.</li>
-            <li>Dockerized workflows to improve data ingestion scalability by 40%.</li>
-            <li>Stack: Airflow, PostgreSQL, Docker, Python</li>
+            <li>Built an image upload API in a microservice environment, adding validation to prevent oversized files and reduce
+unnecessary storage usage.</li>
+            <li>Worked under the guidance of a senior developer on infrastructure tasks, contributing production-ready code.</li>
+            <li>Enhanced system efficiency by enforcing storage limits and streamlining the file handling process</li>
           </ul>
         </div>
       </div>
@@ -90,8 +95,9 @@
           <h3>Risk Consulting Intern — KPMG Vietnam</h3>
           <p><em>Jul 2024 – Aug 2024 | Hanoi, Vietnam</em></p>
           <ul>
-            <li>Supported AI system development for detecting entity name similarities in compliance checks.</li>
-            <li>Assisted in translating and documenting reports for client-facing risk management solutions.</li>
+            <li>Contributed to the development of an AI system that detects potential similarities between client names and
+entities previously linked to illicit activities, supporting compliance and risk management.</li>
+            <li>Translated documents and slides for company activities and presentation</li>
           </ul>
         </div>
       </div>
@@ -101,45 +107,51 @@
 
 <!-- PROJECTS -->
   <section id="projects">
-    <h2>Projects</h2>
+    <h2 data-aos="fade-up">Projects</h2>
 
-    <div class="projects-container">
+    <div class="projects-container" data-aos="fade-up">
       <button class="proj-btn prev">←</button>
 
       <div class="projects-track">
         <div class="project-card">
+          <h3>Web page built to learn frontend</h3>
           <img src="assets/images/project1.png" alt="Project 1">
-          <h3>Trailspur Real Estate Data Pipeline</h3>
-          <p>Automated spatial data ingestion and analysis using PostgreSQL + Python.</p>
-          <a href="#" target="_blank">View on GitHub</a>
+          <p>- Using only HTML, CSS, and JavaScript to create a webpage where users can choose their meals and buy it</p>
+          <a href="https://wolflieu201105.github.io/nextgenproject/" target="_blank">View live demo</a>
         </div>
 
         <div class="project-card">
+          <h3>Endless Journey boardgame recreation</h3>
           <img src="assets/images/project2.png" alt="Project 2">
-          <h3>CRM System for Viettel CX</h3>
-          <p>Full-stack contract management platform with Spring Boot & Thymeleaf.</p>
+          <p>- Redesigned legacy code with object-oriented architecture, separating UI, logic, and data for better scalability.</p>
+          <p>- Improved readability and reduced coupling, making feature updates and debugging significantly faster.</p>
           <a href="#" target="_blank">View on GitHub</a>
         </div>
 
         <div class="project-card">
+          <h3>HACKATHON (goathacks) – repo2resume</h3>
           <img src="assets/images/project3.png" alt="Project 3">
-          <h3>ILI Forecast App</h3>
-          <p>Streamlit app predicting influenza-like illness trends using ML models.</p>
-          <a href="#" target="_blank">Live Demo</a>
+          <p>- Developed an AI-powered résumé generation platform using OpenAI GPT models, Python (FastAPI) backend,
+React.js frontend, and Terraform for deployment on AWS.</p>
+          <p>- Won 1st place out of 15 teams, recognized for addressing a real-world need in job applications and career
+services through automated resume creation.</p>
+          <a href="https://github.com/PhongCT1105/Repo2Resume" target="_blank">View on Github</a>
         </div>
 
         <div class="project-card">
+          <h3>Student Assistant Registration Platform</h3>
           <img src="assets/images/project4.png" alt="Project 4">
-          <h3>Payment Transaction Data Pipeline</h3>
-          <p>ETL pipeline built with Airflow, Docker, and PostgreSQL for data analytics.</p>
-          <a href="#" target="_blank">View on GitHub</a>
+          <p>- Built a full-stack web app with Flask and PostgreSQL, designing relational database schemas, queries, and
+integrations for managing student assistant registrations.</p>
+          <p>- Contributed to both frontend and backend, implementing forms, session management, and a functional UI.</p>
+          <a href="https://www.youtube.com/watch?v=QM9rUlFLYIs" target="_blank">View demo on Youtube</a>
         </div>
 
         <div class="project-card">
+          <h3>Endless Journey boardgame</h3>
           <img src="assets/images/project5.png" alt="Project 5">
-          <h3>Endless Journey (Java Swing)</h3>
-          <p>Modernized a traditional board game with improved UI and MVC pattern.</p>
-          <a href="#" target="_blank">View on GitHub</a>
+          <p>- Using phaser to create a board game that is made in order to promote the board game.</p>
+          <a href="https://github.com/wolflieu201105/JSI2-hackathon/tree/master/src" target="_blank">View on GitHub</a>
         </div>
       </div>
 
@@ -148,7 +160,7 @@
   </section>
 
   <!-- SKILLS -->
-  <section id="skills">
+  <section id="skills" data-aos="fade-up">
     <h2>Skills</h2>
     <ul class="skills-list">
       <li>Java</li>
@@ -189,7 +201,16 @@
     <p>© 2025 Pham Gia Huy (Wolflieu)</p>
   </footer>
 
-
+  
+  <script>
+    AOS.init({
+      duration: 800,
+      easing: 'ease-out',
+      once: false,
+      mirror: true,
+      startEvent: 'DOMContentLoaded'
+    });
+  </script>
   <script src="script.js"></script>
   <script>
   const track = document.querySelector('.projects-track');
@@ -201,7 +222,7 @@
   const gapVW = 2; // matches CSS gap (2rem ~= 2vw visually)
 
   function updateCarousel() {
-    const offset = -(index - 2) * (70 + gapVW); // 70vw per card
+    const offset = -(index - 2) * (60 + gapVW); // 70vw per card
     console.log(offset);
     track.style.transform = `translateX(${offset}vw)`;
 

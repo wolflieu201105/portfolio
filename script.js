@@ -51,3 +51,59 @@ function getCurrentGradientColors(element) {
   const matches = [...style.matchAll(/rgb[a]?\(([^)]+)\)/g)];
   return matches.map((m) => m[1].split(",").map((n) => parseInt(n.trim())));
 }
+
+const typingElement = document.getElementById("typing-text");
+const cursor = document.querySelector(".typing-cursor");
+
+const phrases = [
+  "Hi, I'm Pham Gia Huy",
+  "You might know me as Wolflieu"
+];
+
+let currentPhrase = 0;
+let currentChar = 0;
+let isDeleting = false;
+
+const typingSpeed = 100;
+const deletingSpeed = 60;
+const pauseBetween = 1500;
+
+function colorizeProgressively(text) {
+  // Highlight your name and alias progressively as they appear
+  if (text.includes("Pham Gia Huy")) {
+    const parts = text.split("Pham Gia Huy");
+    const typedPart = parts[0] + `<span style="color:#fff89a;">Pham Gia Huy</span>`;
+    return typedPart;
+  } else if (text.includes("Wolflieu")) {
+    const parts = text.split("Wolflieu");
+    const typedPart = parts[0] + `<span style="color:#fff89a;">Wolflieu</span>`;
+    return typedPart;
+  }
+  return text;
+}
+
+function typeEffect() {
+  const phrase = phrases[currentPhrase];
+  if (isDeleting) {
+    currentChar--;
+  } else {
+    currentChar++;
+  }
+
+  let partial = phrase.substring(0, currentChar);
+  typingElement.innerHTML = colorizeProgressively(partial);
+
+  if (!isDeleting && currentChar === phrase.length) {
+    setTimeout(() => (isDeleting = true), pauseBetween);
+  } else if (isDeleting && currentChar === 0) {
+    isDeleting = false;
+    currentPhrase = (currentPhrase + 1) % phrases.length;
+  }
+
+  const speed = isDeleting ? deletingSpeed : typingSpeed;
+  setTimeout(typeEffect, speed);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  setTimeout(typeEffect, 800);
+});
