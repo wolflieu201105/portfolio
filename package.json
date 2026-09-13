@@ -1,0 +1,8 @@
+{
+  "name": "gia-huy-pham-portfolio",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "build": "node build.mjs"
+  }
+}
